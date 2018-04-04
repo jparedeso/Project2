@@ -1,0 +1,25 @@
+{
+  "name": "BibliotecaBoyz",
+  "description": "Library App",
+  "main": "server.js",
+  "authors": [
+    "jparedeso <jparedeso@gmail.com>"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "biblioteca"
+  ],
+  "homepage": "https://github.com/jparedeso/Project2",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/assets/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "3.3.7"
+  }
+}
