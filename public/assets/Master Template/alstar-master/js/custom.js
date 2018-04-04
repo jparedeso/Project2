@@ -63,9 +63,9 @@
       // else:
 
       images: [
-        "https://s3.us-east-2.amazonaws.com/bibliotecaboyz/MasterTemplate/alstar-master/img/bgslides/1.jpg",
-        "https://s3.us-east-2.amazonaws.com/bibliotecaboyz/MasterTemplate/alstar-master/img/bgslides/2.jpg",
-        "https://s3.us-east-2.amazonaws.com/bibliotecaboyz/MasterTemplate/alstar-master/img/bgslides/3.jpg"
+        "img/bgslides/1.jpg",
+        "img/bgslides/2.jpg",
+        "img/bgslides/3.jpg"
       ],
 
       onStart: function() {},
