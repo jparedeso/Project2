@@ -1,16 +1,20 @@
 module.exports = function(sequelize, DataTypes) {
     var Location = sequelize.define("Location", {
       // Giving the Location model strings
-      place: DataTypes.STRING
-
+        place: {
+            type: DataTypes.STRING,
+            allowNull: false
+        }
     });
   
     // will use associate to join Location with other tables
 
     // Location.associate = function(models) {
-    //   Location.hasMany(models."other table here", {
-    //     onDelete: "cascade"
-    //   });
+    //     Location.belongsTo(models.Exchange, {
+    //         foreignKey: {
+    //             allowNull: false
+    //         }
+    //     });
     // };
   
     return Location;
