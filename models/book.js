@@ -1,13 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
     var Book = sequelize.define("Book", {
       // Giving the Book model strings
-
-    //   title: DataTypes.STRING,
-    //   author: DataTypes.STRING,
-    //   year: DataTypes.INTEGER,
-    //   category: DataTypes.STRING,
-    //   available: DataTypes.BOOLEAN
-
         title: {
             type: DataTypes.STRING,
             allowNull: false
