@@ -10,7 +10,7 @@ module.exports = function(app) {
         }
         // Here we add an "include" property to our options in our findAll query
         // We set the value to an array of the models we want to include in a left outer join
-        // In this case, just db.Author
+        // In this case, just db.Book
         db.Book.findAll({
             where: query,
             include: [db.User]
@@ -23,7 +23,6 @@ module.exports = function(app) {
         app.get("/api/books/:id", function(req, res) {
         // Here we add an "include" property to our options in our findOne query
         // We set the value to an array of the models we want to include in a left outer join
-        // In this case, just db.Author
         db.Book.findOne({
             where: {
             id: req.params.id
@@ -37,6 +36,19 @@ module.exports = function(app) {
     // route for creating a new Book
     app.post("/api/books", function(req, res) {
         db.Book.create(req.body).then(function(dbBook) {
+            res.json(dbBook);
+        });
+    });
+
+    // PUT route for updating books
+    app.put("/api/books", function(req, res) {
+        db.Book.update(
+            req.body,
+            {
+            where: {
+                id: req.body.id
+            }
+            }).then(function(dbBook) {
             res.json(dbBook);
         });
     });
