@@ -21,7 +21,8 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
         },
         category: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            allowNull: false
             // value: ("Arts", "Biography", "Children's Books", "Comics & Graphic Novels", "Computers & Technology", "Cookbooks", "Education", "Health", "History", "Horror", "Literature", "Mystery, Thriller & Suspense", "Philosophy", "Poetry", "Politics", "Religion", "Science Fiction & Fantasy", "Travel", "Other")
         },
         available: {
