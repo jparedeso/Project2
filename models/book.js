@@ -1,12 +1,13 @@
 module.exports = function(sequelize, DataTypes) {
     var Book = sequelize.define("Book", {
       // Giving the Book model strings
-        // user_id to be stored to link book to user, this is not a primary key id. A primary id column will automatically be generated.
-        // not sure if it works
 
-        // user_id: {
-        //     type: Sequelize.INTEGER,
-        // },
+    //   title: DataTypes.STRING,
+    //   author: DataTypes.STRING,
+    //   year: DataTypes.INTEGER,
+    //   category: DataTypes.STRING,
+    //   available: DataTypes.BOOLEAN
+
         title: {
             type: DataTypes.STRING,
             allowNull: false
@@ -23,22 +24,21 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.ENUM,
             values: ["Arts", "Biography", "Children's Books", "Comics & Graphic Novels", "Computers & Technology", "Cookbooks", "Education", "Health", "History", "Horror", "Literature", "Mystery, Thriller & Suspense", "Philosophy", "Poetry", "Politics", "Religion", "Science Fiction & Fantasy", "Travel", "Other"]
         },
-        checkedOut: {
+        available: {
             type: DataTypes.BOOLEAN,
             allowNull: false
-        },
-
+        }
     });
   
     // will use associate to join Book with other tables
 
-    // Book.associate = function(models) {
-    //     Book.belongsTo(models.User, {
-    //         foreignKey: {
-    //             allowNull: false
-    //         }
-    //     });
-    // };
+    Book.associate = function(models) {
+        Book.belongsTo(models.User, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+    };
   
     return Book;
 };

@@ -1,10 +1,15 @@
 module.exports = function(sequelize, DataTypes) {
     var Exchange = sequelize.define("Exchange", {
       // Giving the Exchange model strings
+
+    //   status: DataTypes.STRING
+      
         status: {
             type: DataTypes.ENUM,
             value: ["pending", "complete"]
         }
+
+
         // user_id: {
         //     type: DataTypes.INTEGER,
         //     allowNull: false
