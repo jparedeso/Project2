@@ -4,9 +4,11 @@ module.exports = function(sequelize, DataTypes) {
 
     //   status: DataTypes.STRING
       
+        // made boolean for true false if it has been exchanged
         status: {
-            type: DataTypes.ENUM,
-            value: ["pending", "complete"]
+            type: DataTypes.BOOLEAN,
+            allowNull: false
+            // value: ("pending", "complete")
         }
 
 
