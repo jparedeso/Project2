@@ -17,7 +17,7 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false
         },
-        password: {
+        userPassword: {
             type: DataTypes.STRING,
             allowNull: false
         }
@@ -28,6 +28,11 @@ module.exports = function(sequelize, DataTypes) {
     User.associate = function(models) {
         User.hasMany(models.Book, {
             onDelete: "cascade"
+        });
+        User.belongsTo(models.Group, {
+            foreignKey: {
+                allowNull: false
+            }
         });
     };
   
