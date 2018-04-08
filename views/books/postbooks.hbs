@@ -1,0 +1,85 @@
+<!-- Parallax 1 -->
+<section id="parallax1" class="home-section parallax" data-stellar-background-ratio="0.5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="color-light">
+                    <h2 class="wow bounceInDown" data-wow-delay="0.5s">Biblioteca Boyz</h2>
+                    <p class="lead wow bounceInUp" data-wow-delay="1s">Share books with your friends</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="home-section bg-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+                <div class="section-heading">
+                    <h2>Post your book</h2>
+                    <div class="heading-line"></div>
+                    <p>Fill out to share a book with your group, then press submit.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+                <div id="sendmessage">Your message has been sent. Thank you!</div>
+                <div id="errormessage"></div>
+
+                <form action="" method="post" class="form-horizontal contactForm" role="form">
+
+                    <div class="col-md-offset-2 col-md-8">
+                        <div class="form-group">
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Your email address" data-rule="minlen:4" data-msg="Please enter a valid email" />
+                            <div class="validation"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-offset-2 col-md-8">
+                        <div class="form-group">
+                            <input type="text" name="name" class="form-control" id="name" placeholder="Book Title" data-rule="minlen:2" data-msg="Please enter full book title." />
+                            <div class="validation"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-offset-2 col-md-8">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="name" id="author" placeholder="Author" data-rule="minlen:4" data-msg="Please enter the author full name." />
+                            <div class="validation"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-offset-2 col-md-8">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="subject" id="year" placeholder="Year Release" data-rule="minlen:4" data-msg="Please enter a full year. Ex. 1994" />
+                            <div class="validation"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-offset-2 col-md-8">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="subject" id="genre" placeholder="Book Genre" data-rule="minlen:4" data-msg="Please enter a book genre. Ex. Sci-fi" />
+                            <div class="validation"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-offset-2 col-md-8">
+                        <div class="form-group">
+                            <textarea class="form-control" name="message" rows="5" data-rule="userReview" data-msg="Please write something for us" placeholder="How would you explain your book?"></textarea>
+                            <div class="validation"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-8">
+                            <button type="submit" id="postBook" class="btn btn-theme btn-lg btn-block">Post your book</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</section>
