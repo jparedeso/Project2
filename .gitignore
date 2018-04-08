@@ -2,3 +2,5 @@ node_modules/
 public/assets/lib/
 .idea/
 .elasticbeanstalk/
+.DS_Store
+.env
