@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const index = require("./routes/web/index");
 const user = require("./routes/web/user");
 const expressHbs = require("express-handlebars");
-const session = require("express-session");
+// const session = require("express-session");
 
 // Sets up the Express App
 // =============================================================
@@ -25,7 +25,7 @@ app.set("view engine", "hbs");
 app.use(bodyParser.urlencoded({ extended: true }));
 // parse application/json
 app.use(bodyParser.json());
-app.use(session({secret: "bibliotecaboyz", resave: false, saveUninitialized: false}));
+// app.use(session({secret: "bibliotecaboyz", resave: false, saveUninitialized: false}));
 // Static directory to be served
 // app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static("public"));
