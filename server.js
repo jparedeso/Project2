@@ -36,7 +36,6 @@ require("./routes/api/user-api-routes.js")(app);
 require("./routes/api/book-api-routes.js")(app);
 require("./routes/api/exchange-api-routes.js")(app);
 require("./routes/api/location-api-routes.js")(app);
-// require("./routes/html-routes.js")(app);
 
 // Starts the server to begin listening
 // =============================================================
