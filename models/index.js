@@ -7,8 +7,6 @@ const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config')[env];
-console.log(env);
-console.log(config);
 const db = {};
 
 // if (config.use_env_variable) {
@@ -17,7 +15,7 @@ const db = {};
 //   var sequelize = new Sequelize(config.database, config.username, config.password, config);
 // }
 
-var sequelize = new Sequelize(config.database, config.username, config.password, config);
+const sequelize = new Sequelize(config.database, config.username, config.password, config);
 
 sequelize
 .authenticate()
