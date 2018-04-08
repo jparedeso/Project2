@@ -18,6 +18,12 @@ module.exports = {
     password: process.env.RDS_PASSWORD,
     database: process.env.RDS_DATABASE,
     host: process.env.RDS_HOST,
-    dialect: "mysql"
+    dialect: "mysql",
+      pool: {
+          max: 5,
+          min: 0,
+          acquire: 30000,
+          idle: 10000
+      },
   }
 };
