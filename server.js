@@ -1,7 +1,7 @@
 // =============================================================
 var express = require("express");
 var bodyParser = require("body-parser");
-var index = require("./routes/index")
+var index = require("./routes/web/index")
 var expressHbs = require("express-handlebars");
 
 // Sets up the Express App
@@ -31,11 +31,11 @@ app.use('/', index);
 
 // Routes
 // =============================================================
-require("./routes/group-api-routes.js")(app);
-require("./routes/user-api-routes.js")(app);
-require("./routes/book-api-routes.js")(app);
-require("./routes/exchange-api-routes.js")(app);
-require("./routes/location-api-routes.js")(app);
+require("./routes/api/group-api-routes.js")(app);
+require("./routes/api/user-api-routes.js")(app);
+require("./routes/api/book-api-routes.js")(app);
+require("./routes/api/exchange-api-routes.js")(app);
+require("./routes/api/location-api-routes.js")(app);
 // require("./routes/html-routes.js")(app);
 
 // Starts the server to begin listening
