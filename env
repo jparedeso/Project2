@@ -1,5 +1,0 @@
-NODE_ENV=test
-RDS_DATABASE=library_db
-RDS_HOST=library.cxnhooasyo17.us-east-1.rds.amazonaws.com
-RDS_USERNAME=jparedeso
-RDS_PASSWORD=bibliotecaboyz
