@@ -1,9 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
     var Location = sequelize.define("Location", {
       // Giving the Location model strings
-
-    //   place: DataTypes.STRING
-      
         place: {
             type: DataTypes.STRING,
             allowNull: false
@@ -12,13 +9,13 @@ module.exports = function(sequelize, DataTypes) {
   
     // will use associate to join Location with other tables
 
-    Location.associate = function(models) {
-        Location.belongsTo(models.Exchange, {
-            foreignKey: {
-                allowNull: false
-            }
-        });
-    };
+    // Location.associate = function(models) {
+    //     Location.belongsTo(models.Exchange, {
+    //         foreignKey: {
+    //             allowNull: false
+    //         }
+    //     });
+    // };
   
     return Location;
   };

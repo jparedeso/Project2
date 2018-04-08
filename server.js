@@ -21,7 +21,11 @@ app.use(express.static("public"));
 
 // Routes
 // =============================================================
-// require("./routes/api-routes.js")(app);
+require("./routes/group-api-routes.js")(app);
+require("./routes/user-api-routes.js")(app);
+require("./routes/book-api-routes.js")(app);
+require("./routes/exchange-api-routes.js")(app);
+require("./routes/location-api-routes.js")(app);
 // require("./routes/html-routes.js")(app);
 
 // Starts the server to begin listening

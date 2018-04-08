@@ -1,13 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
     var Book = sequelize.define("Book", {
       // Giving the Book model strings
-
-    //   title: DataTypes.STRING,
-    //   author: DataTypes.STRING,
-    //   year: DataTypes.INTEGER,
-    //   category: DataTypes.STRING,
-    //   available: DataTypes.BOOLEAN
-
         title: {
             type: DataTypes.STRING,
             allowNull: false
@@ -23,7 +16,7 @@ module.exports = function(sequelize, DataTypes) {
         category: {
             type: DataTypes.STRING,
             allowNull: false
-            // value: ("Arts", "Biography", "Children's Books", "Comics & Graphic Novels", "Computers & Technology", "Cookbooks", "Education", "Health", "History", "Horror", "Literature", "Mystery, Thriller & Suspense", "Philosophy", "Poetry", "Politics", "Religion", "Science Fiction & Fantasy", "Travel", "Other")
+            // value: ("Arts", "Biography", "Children's Books", "Comics & Graphic Novels", "Computers & Technology", "Cookbooks", "Education", "Health", "History", "Horror", "Literature", "Mystery, Thriller & Suspense", "Philosophy", "Poetry", "Politics", "Religion", "Science Fiction & Fantasy", "Travel", "True Crime", "Other")
         },
         available: {
             type: DataTypes.BOOLEAN,
