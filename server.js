@@ -1,16 +1,18 @@
 // =============================================================
-var express = require("express");
-var bodyParser = require("body-parser");
-var index = require("./routes/web/index")
-var expressHbs = require("express-handlebars");
+const express = require("express");
+const bodyParser = require("body-parser");
+const index = require("./routes/web/index");
+const user = require("./routes/web/user");
+const expressHbs = require("express-handlebars");
+// const session = require("express-session");
 
 // Sets up the Express App
 // =============================================================
-var app = express();
-var PORT = process.env.PORT || 8080;
+const app = express();
+const PORT = process.env.PORT || 8081;
 
 // Requiring our models for syncing
-var db = require("./models");
+const db = require("./models");
 
 //engine setup
 app.engine('.hbs', expressHbs({
@@ -23,11 +25,14 @@ app.set("view engine", "hbs");
 app.use(bodyParser.urlencoded({ extended: true }));
 // parse application/json
 app.use(bodyParser.json());
-
+// app.use(session({secret: "bibliotecaboyz", resave: false, saveUninitialized: false}));
 // Static directory to be served
 // app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static("public"));
+
+app.use('/user', user);
 app.use('/', index);
+
 
 // Routes
 // =============================================================
@@ -36,7 +41,6 @@ require("./routes/api/user-api-routes.js")(app);
 require("./routes/api/book-api-routes.js")(app);
 require("./routes/api/exchange-api-routes.js")(app);
 require("./routes/api/location-api-routes.js")(app);
-// require("./routes/html-routes.js")(app);
 
 // Starts the server to begin listening
 // =============================================================
