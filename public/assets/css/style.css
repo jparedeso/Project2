@@ -2,6 +2,16 @@
     height: 350px;
 } */
 
+#header-font1 {
+    color: black;
+    font-size: 48px;
+}
+
+#header-font2 {
+    color: black;
+    font-size: 24px;
+}
+
 #parallax3 {
-	background-image: url(../images/newlibrary.png);
+	background-image: url(../images/oldbooks.jpg);
 }
