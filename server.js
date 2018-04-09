@@ -3,6 +3,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const index = require("./routes/web/index");
 const user = require("./routes/web/user");
+const books = require("./routes/web/postbooks");
 const expressHbs = require("express-handlebars");
 const session = require("express-session");
 const passport = require("passport");
@@ -38,7 +39,7 @@ app.use(express.static("public"));
 
 app.use('/user', user);
 app.use('/', index);
-// app.use('/postbooks', postbooks);
+app.use('/books', books);
 
 
 // Routes
