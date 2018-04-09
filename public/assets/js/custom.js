@@ -15,15 +15,15 @@
   });
 
   //navigation
-  $('.navigation').onePageNav({
-    begin: function() {
-      console.log('start');
-    },
-    end: function() {
-      console.log('stop');
-    },
-    scrollOffset: 0
-  });
+  // $('.navigation').onePageNav({
+  //   begin: function() {
+  //     console.log('start');
+  //   },
+  //   end: function() {
+  //     console.log('stop');
+  //   },
+  //   scrollOffset: 0
+  // });
 
   $(".navbar-collapse a").on('click', function() {
     $(".navbar-collapse.collapse").removeClass('in');
