@@ -100,7 +100,7 @@
 
     var scrollTop = $(window).scrollTop();
 
-    if (scrollTop > 100) {
+    if (scrollTop > 1) {
       $('.navbar-default').css('display', 'block');
       $('.navbar-default').addClass('fixed-to-top');
 
