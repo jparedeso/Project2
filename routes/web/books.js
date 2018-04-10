@@ -6,7 +6,9 @@ var router = express.Router();
 router.get('/postbooks', function(req, res, next) {
     res.render('books/postbooks', {title: 'Biblioteca Boyz'});
 });
+
 router.get('/mybooks', function(req, res, next) {
     res.render('books/mybooks', {title: 'Biblioteca Boyz'});
 });
+
 module.exports = router;
