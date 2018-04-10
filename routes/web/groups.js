@@ -3,8 +3,8 @@ var router = express.Router();
 
 /* GET postbook page. */
 
-router.get('/postbooks', function(req, res, next) {
-    res.render('books/postbooks', {title: 'Biblioteca Boyz'});
+router.get('/', function(req, res, next) {
+    res.render('groups/groups', {title: 'Biblioteca Boyz'});
 });
 
 
