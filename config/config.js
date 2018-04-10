@@ -5,6 +5,7 @@ module.exports = {
     database: "library_db",
     // port: process.env.BRIANSPORT,
     host: "127.0.0.1",
+    port: proces.env.BRIANSPORT,
     dialect: "mysql"
   },
   test: {
