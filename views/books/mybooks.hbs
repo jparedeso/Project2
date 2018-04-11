@@ -27,6 +27,19 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
+                 
+                {{!-- yet to be devoured --}}
+                <ul>
+                    {{#each Books}}
+                        {{#if available}}
+                            <li>
+                                {{this.title}} - {{this.author}} - {{this.year}} - {{this.category}}
+                            </li>
+                        {{/if}}
+                    {{/each}}
+                </ul>
+
+       
 
                 {{!-- <ul id="og-grid" class="og-grid">
                     <li>
