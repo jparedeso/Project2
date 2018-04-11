@@ -9,11 +9,13 @@ const expressHbs = require("express-handlebars");
 const session = require("express-session");
 const passport = require("passport");
 const flash = require("connect-flash");
+const validator = require("express-validator");
 
 // Sets up the Express App
 // =============================================================
 const app = express();
-const PORT = process.env.PORT || 8081;
+require("./config/passport");
+const PORT = process.env.PORT || 8080;
 
 // Requiring our models for syncing
 const db = require("./models");
@@ -24,7 +26,7 @@ app.engine('.hbs', expressHbs({
     extname: ".hbs"
 }));
 app.set("view engine", "hbs");
-
+app.use(validator());
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 // parse application/json
