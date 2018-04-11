@@ -1,3 +1,5 @@
+const bcrypt = require("bcrypt-nodejs");
+
 module.exports = {
     hashPassword: (password, cb) => {
         bcrypt.hash(password, bcrypt.genSaltSync(5), null, (err, hash) => {

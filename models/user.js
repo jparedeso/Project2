@@ -4,7 +4,7 @@ module.exports = function(sequelize, DataTypes) {
       // Giving the User model name strings
         firstName: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             validate: {
                 notEmpty: true
                 // len
@@ -12,11 +12,11 @@ module.exports = function(sequelize, DataTypes) {
         },
         lastName: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         userName: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         email: {
             type: DataTypes.STRING,
@@ -25,7 +25,7 @@ module.exports = function(sequelize, DataTypes) {
         //gonna get rid of this one
         userPassword: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         }
     });
   

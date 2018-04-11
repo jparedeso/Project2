@@ -12,7 +12,7 @@ router.get('/signup', function(req, res, next)  {
 });
 
 router.post('/signup', passport.authenticate('local.signup', {
-    successRedirect: 'user/profile',
+    successRedirect: '/user/profile',
     failureRedirect: '/user/signup',
     failureFlash: true
 }));
