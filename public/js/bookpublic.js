@@ -27,4 +27,9 @@ $(function() {
 
     });
 
+    // get data for all books to display books in html
+    $.get("/api/books", function(data) {
+        console.log(data);
+    });
+
 });
