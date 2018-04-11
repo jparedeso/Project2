@@ -1,7 +1,7 @@
 const passport = require("passport");
 const db = require("../models");
 const LocalStrategy = require("passport-local").Strategy;
-
+const Helpers = require("../helpers/sqlhelper");
 passport.serializeUser(function(user, done) {
    done(null, user.email);
 });
@@ -51,7 +51,7 @@ passport.use("local.signup", new LocalStrategy({
            email: email,
            password: password
         });
-        db.User.hashPassword(password, function(hash) {
+        Helpers.hashPassword(password, function(hash) {
             newUser.password = hash;
             newUser.save().then(function(user) {
                 return done(null, user);
@@ -86,7 +86,7 @@ passport.use("local.signin", new LocalStrategy({
         if (!user) {
             return done(null, false, {message: "User doesn't exist."});
         }
-        db.User.validPassword(password, user.password, function(isMatch) {
+        Helpers.validPassword(password, user.password, function(isMatch) {
             if (isMatch) {
                 return done(null, user);
             } else {
