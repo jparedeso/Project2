@@ -112,7 +112,7 @@
 
 
   //parallax
-  if ($('#parallax1').length || $('#parallax2').length) {
+  if ($('#parallax1').length || $('#parallax3').length) {
 
 
     $(window).stellar({
