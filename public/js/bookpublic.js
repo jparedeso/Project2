@@ -30,6 +30,18 @@ $(function() {
     // get data for all books to display books in html
     $.get("/api/books", function(data) {
         console.log(data);
+
+        // empty to displaymybooks before adding new content
+        $("#displaymybooks").empty();
+        // if the data is not there, then return an error message
+        if (!data) {
+            $("#displaymybooks").append("<h2> I'm sorry, but you haven't added any books yet. </h2>");
+        }
+        else {
+            for (i = 0; i < data.length; i++) {
+                $("#displaymybooks").append("<p>Title: " + data[i].title + " - Author: " + data[i].author + " - Year: " + data[i].year + " - Genre: " + data[i].category + "</p>");
+            }
+        }
     });
 
 });

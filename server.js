@@ -15,7 +15,7 @@ const validator = require("express-validator");
 // =============================================================
 const app = express();
 require("./config/passport");
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8081;
 
 // Requiring our models for syncing
 const db = require("./models");
