@@ -41,6 +41,11 @@ app.use(passport.session());
 // Static directory to be served
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use((req, res, next) => {
+   res.locals.login = req.isAuthenticated();
+   next();
+});
+
 app.use('/user', user);
 app.use('/', index);
 app.use('/books', books);
