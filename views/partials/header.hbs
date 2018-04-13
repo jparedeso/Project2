@@ -23,7 +23,16 @@
                        <ul> <a class="dropdown-item" href="/books/mybooks">My Books</a></ul>
                         <ul><a class="dropdown-item" href="/books/postbooks">Post a Book</a></ul>
                         <ul> <a class="dropdown-item" href="/books/search">Search Books</a></ul>
+                    </div>
                 </li>
+                {{#if login}}
+                    <li><a href="/user/profile">Profile</a></li>
+                    <li><a href="/user/logout">Log Out</a></li>
+                {{else}}
+                    <li><a href="/user/signup">Sign Up</a></li>
+                    <li><a href="/user/signin">Log In</a></li>
+
+                {{/if}}
                 {{!-- <li><a href="#team">Team</a></li> --}}
                 {{!-- <li><a href="#contact">Contact</a></li> --}}
             </ul>
