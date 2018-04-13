@@ -35,7 +35,7 @@ $(function() {
     
 
     // get data for books to display books in html
-    $.get("/api/books", function(data) {
+    $.get("/api/user-books", function(data) {
         console.log(data);
 
         // empty to displaymybooks before adding new content
@@ -46,26 +46,25 @@ $(function() {
         }
         else {
             for (i = 0; i < data.length; i++) {
-                $("#displaymybooks").append("<li id='booklist'>" + data[i].title + "  -  " + data[i].author + "  -  " + data[i].year + "  -  " + data[i].category + "<button id='removebookbutton' data-bookid=" + data[i].id + ">Remove</button>" + "</li>");
+                $("#displaymybooks").append("<li class='booklist'>" + data[i].title + "  -  " + data[i].author + "  -  " + data[i].year + "  -  " + data[i].category + "<button class='removebookbutton' data-bookid=" + data[i].id + ">Remove</button>" + "</li>");
             }
         }
+        $(".removebookbutton").on("click", function(event) {
+            var id = $(this).data("bookid");
+            console.log(id);
+
+            $.ajax("/api/user-books/" + id, {
+                type: "DELETE"
+            }).then(
+                function() {
+                    console.log("deleted book");
+                    // Reload the page to get the updated list
+                    location.reload();
+                });
+        });
     });
-    // i will copy and paste this code into the book display dynamic list once we add isbn column
-    // + "<img src='https://covers.openlibrary.org/b/isbn/" + data[i].isbn +"-S.jpg'> " 
-
-    $("#removebookbutton").on("click", function(event) {
-
-        var id = $(this).data("bookid");
-        console.log(id);
-
-        $.ajax("/api/books/" + id, {
-            type: "DELETE"
-        }).then(
-            function() {
-                console.log("deleted book");
-                // Reload the page to get the updated list
-                location.reload();
-            });
-    });
-
 });
+
+
+// i will copy and paste this code into the book display dynamic list once we add isbn column
+    // + "<img src='https://covers.openlibrary.org/b/isbn/" + data[i].isbn +"-S.jpg'> "

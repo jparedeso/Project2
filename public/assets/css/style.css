@@ -30,7 +30,7 @@
 	background-image: url(../images/oldbooks.jpg);
 }
 
-#booklist, #userlist {
+.booklist, .userlist {
     padding: 10px;
     font-size: 18px;
     /* font-weight: bold; */
@@ -39,7 +39,7 @@
     margin-bottom: 5px;
 }
 
-#removebookbutton {
+.removebookbutton {
     display: inline-block;
     margin: 0 auto;
     margin-left: 20px;
