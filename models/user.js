@@ -14,16 +14,12 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: true
         },
-        userName: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
         email: {
             type: DataTypes.STRING,
             allowNull: false
         },
         //gonna get rid of this one
-        userPassword: {
+        password: {
             type: DataTypes.STRING,
             allowNull: true
         }
