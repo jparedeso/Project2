@@ -3,14 +3,14 @@ const db = require("../models");
 const LocalStrategy = require("passport-local").Strategy;
 const Helpers = require("../helpers/sqlhelper");
 passport.serializeUser((user, done) => {
-   done(null, user.email);
+   done(null, user.id);
 });
 
-passport.deserializeUser((email, done) => {
+passport.deserializeUser((id, done) => {
    db.User.findOne(
        {
            where: {
-               email: email
+               id: id
            }
        }
    ).then((user) => {

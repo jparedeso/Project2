@@ -34,7 +34,7 @@ module.exports = function(app) {
     });
 
     // route for creating a new Book
-    app.post("/api/books", function(req, res) {
+    app.post("/api/books", function(req, res, next) {
         db.Book.create(req.body).then(function(dbBook) {
             res.json(dbBook);
         });

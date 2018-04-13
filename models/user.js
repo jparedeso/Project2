@@ -4,24 +4,27 @@ module.exports = function(sequelize, DataTypes) {
       // Giving the User model name strings
         firstName: {
             type: DataTypes.STRING,
-            allowNull: true,
+            allowNull: false,
             validate: {
-                notEmpty: true
-                // len
+                notEmpty: true,
+                len: [2,20]
             }
         },
         lastName: {
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: false,
+            validate: {
+                notEmpty: true,
+                len: [2,20]
+            }
         },
         email: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        //gonna get rid of this one
         password: {
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: false
         }
     });
   
