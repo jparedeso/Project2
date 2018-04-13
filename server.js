@@ -11,6 +11,8 @@ const passport = require("passport");
 const flash = require("connect-flash");
 const validator = require("express-validator");
 const path = require("path");
+const cookieParser = require("cookie-parser");
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 // Sets up the Express App
 // =============================================================
@@ -20,6 +22,11 @@ const PORT = process.env.PORT || 8081;
 
 // Requiring our models for syncing
 const db = require("./models");
+const sessionStore = new SequelizeStore({
+    db: db.sequelize,
+    checkExpirationInterval: 15 * 60 * 1000, //15 minutes
+    expiration: 24 * 60 * 60 * 1000 // 24 hours
+});
 
 //engine setup
 app.engine('.hbs', expressHbs({
@@ -33,24 +40,32 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // parse application/json
 app.use(bodyParser.json());
 app.use(validator());
-app.use(session({secret: "bibliotecaboyz", resave: false, saveUninitialized: false}));
+app.use(cookieParser());
+app.use(session(
+        {
+            secret: "bibliotecaboyz",
+            resave: false,
+            saveUninitialized: false,
+            store: sessionStore
+        }
+    ));
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
 // Static directory to be served
 app.use(express.static(path.join(__dirname, 'public')));
-
+sessionStore.sync();
 app.use((req, res, next) => {
    res.locals.login = req.isAuthenticated();
+   res.locals.session = req.session;
    next();
 });
 
-app.use('/user', user);
-app.use('/', index);
 app.use('/books', books);
 app.use('/groups', groups);
-
+app.use('/user', user);
+app.use('/', index);
 
 // Routes
 // =============================================================
