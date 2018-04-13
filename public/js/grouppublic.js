@@ -12,7 +12,7 @@ $(function() {
         }
         else {
             for (i = 0; i < data.length; i++) {
-                $("#groupusers").append("<li id='userlist'>" + data[i].firstName + " " + data[i].lastName + "<button id='usersbooks' data-eachusersbooks=" + data[i].id + ">See Books</button>" + "<button id='getuseremail' data-useremail=" + data[i].email + ">Contact User</button>" + "</li>");
+                $("#groupusers").append("<li class='userlist'>" + data[i].firstName + " " + data[i].lastName + "<button id='usersbooks' data-eachusersbooks=" + data[i].id + ">See Books</button>" + "<button id='getuseremail' data-useremail=" + data[i].email + ">Contact User</button>" + "</li>");
             }
         }
     });
@@ -34,7 +34,7 @@ $(function() {
         }
         else {
             for (i = 0; i < data.length; i++) {
-                $("#allgroupbooks").append("<li id='booklist'>" + data[i].title + "  -  " + data[i].author + "  -  " + data[i].year + "  -  " + data[i].category + "<button id='requestbook' data-bookemail=" + data[i].UserId + ">Request Book</button>" + "</li>");
+                $("#allgroupbooks").append("<li class='booklist'>" + data[i].title + "  -  " + data[i].author + "  -  " + data[i].year + "  -  " + data[i].category + "<button id='requestbook' data-bookemail=" + data[i].UserId + ">Request Book</button>" + "</li>");
             }
         }
     });

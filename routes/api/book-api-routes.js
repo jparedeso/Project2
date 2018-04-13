@@ -1,4 +1,4 @@
-var db = require("../../models");
+const db = require("../../models");
 
 module.exports = function(app) {
 
@@ -13,6 +13,18 @@ module.exports = function(app) {
         // In this case, just db.Book
         db.Book.findAll({
             where: query,
+            include: [db.User]
+        }).then(function(dbBook) {
+            res.json(dbBook);
+        });
+    });
+
+    // GET route for getting current User's books
+    app.get("/api/user-books", function(req, res) {
+        db.Book.findAll({
+            where: {
+                UserId: req.user.id
+            },
             include: [db.User]
         }).then(function(dbBook) {
             res.json(dbBook);
@@ -35,13 +47,17 @@ module.exports = function(app) {
 
     // route for creating a new Book
     app.post("/api/books", function(req, res, next) {
-        db.Book.create(req.body).then(function(dbBook) {
+        db.Book.create(
+            {
+                ...req.body,
+                UserId: req.user.id
+            }).then(function(dbBook) {
             res.json(dbBook);
         });
     });
 
     // PUT route for updating books
-    app.put("/api/books", function(req, res) {
+    app.put("/api/user-books", function(req, res) {
         db.Book.update(
             req.body,
             {
@@ -54,7 +70,7 @@ module.exports = function(app) {
     });
 
     // DELETE route for deleting books
-    app.delete("/api/books/:id", function(req, res) {
+    app.delete("/api/user-books/:id", function(req, res) {
         db.Book.destroy({
             where: {
             id: req.params.id
