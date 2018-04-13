@@ -57,6 +57,9 @@
     font-weight: bold;
 }
 
+#mybookmodal {
+    padding-top: 100px;
+}
 nav.navbar{
 	position: fixed;
 	top: 0px;
