@@ -1,8 +1,8 @@
 INSERT INTO Groups (groupName, createdAt, updatedAt) VALUES ("TestGroup", "2018-04-11 03:35:58", "2018-04-11 03:35:58");
 
-INSERT INTO Users (firstName, lastName, userName, email, userPassword, createdAt, updatedAt, GroupId) VALUES ("Fuzzy", "Jones", "fuzzywuzzy", "fuzzy@test.com", "fuzzy1", "2018-04-11 03:35:58", "2018-04-11 03:35:58", 1);
-INSERT INTO Users (firstName, lastName, userName, email, userPassword, createdAt, updatedAt, GroupId) VALUES ("Jorge", "Paredes", "georgie", "jorge@test.com", "jorge1", "2018-04-11 03:35:58", "2018-04-11 03:35:58", 1);
-INSERT INTO Users (firstName, lastName, userName, email, userPassword, createdAt, updatedAt, GroupId) VALUES ("Brian", "Sandoval", "coolbrian", "brian@test.com", "brian1", "2018-04-11 03:35:58", "2018-04-11 03:35:58", 1);
+INSERT INTO Users (firstName, lastName, email, password, createdAt, updatedAt, GroupId) VALUES ("Fuzzy", "Jones", "fuzzy@test.com", "fuzzy1", "2018-04-11 03:35:58", "2018-04-11 03:35:58", 1);
+INSERT INTO Users (firstName, lastName, email, password, createdAt, updatedAt, GroupId) VALUES ("Jorge", "Paredes", "jorge@test.com", "jorge1", "2018-04-11 03:35:58", "2018-04-11 03:35:58", 1);
+INSERT INTO Users (firstName, lastName, email, password, createdAt, updatedAt, GroupId) VALUES ("Brian", "Sandoval", "brian@test.com", "brian1", "2018-04-11 03:35:58", "2018-04-11 03:35:58", 1);
 
 INSERT INTO Books (title, author, year, category, available, createdAt, updatedAt, UserId) VALUES ("Ready Player One", "Ernest Kline", 2011, "Science Fiction", true, "2018-04-11 03:35:58", "2018-04-11 03:35:58", 1);
 INSERT INTO Books (title, author, year, category, available, createdAt, updatedAt, UserId) VALUES ("The Hate Factory", "Georgelle Hirliman", 2005, "True Crime", true, "2018-04-11 03:35:58", "2018-04-11 03:35:58", 1);
