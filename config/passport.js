@@ -49,7 +49,9 @@ passport.use("local.signup", new LocalStrategy({
             }
         var newUser = db.User.build({
            email: email,
-           password: password
+           password: password,
+           firstName: req.body.firstName,
+           lastName: req.body.lastName
         });
         Helpers.hashPassword(password, function(err, hash) {
             if (err) {
