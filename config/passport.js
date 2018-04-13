@@ -2,20 +2,20 @@ const passport = require("passport");
 const db = require("../models");
 const LocalStrategy = require("passport-local").Strategy;
 const Helpers = require("../helpers/sqlhelper");
-passport.serializeUser(function(user, done) {
+passport.serializeUser((user, done) => {
    done(null, user.email);
 });
 
-passport.deserializeUser(function(email, done) {
+passport.deserializeUser((email, done) => {
    db.User.findOne(
        {
            where: {
                email: email
            }
        }
-   ).then(function(user) {
+   ).then((user) => {
        done(null, user);
-   }).catch(function(err) {
+   }).catch((err) => {
        done(err, null);
    });
 });
@@ -24,13 +24,13 @@ passport.use("local.signup", new LocalStrategy({
     usernameField: "email",
     passwordField: "password",
     passReqToCallback: true
-}, function (req, email, password, done) {
+}, (req, email, password, done) => {
     req.checkBody("email", "Invalid email").notEmpty().isEmail();
     req.checkBody("password", "Invalid password").notEmpty().isLength({min:4});
     var errors = req.validationErrors();
     if (errors) {
         var messages = [];
-        errors.forEach(function(err) {
+        errors.forEach((err) => {
             messages.push(err.msg);
         });
         return done(null, false, req.flash("error", messages));
@@ -40,7 +40,7 @@ passport.use("local.signup", new LocalStrategy({
             where: {
                 email: email
             }
-        }).then(function(user) {
+        }).then((user) => {
             if (user) {
                 return done(null, false, {message: "User already exists."});
             }
@@ -53,17 +53,17 @@ passport.use("local.signup", new LocalStrategy({
            firstName: req.body.firstName,
            lastName: req.body.lastName
         });
-        Helpers.hashPassword(password, function(err, hash) {
+        Helpers.hashPassword(password,(err, hash) => {
             if (err) {
                 console.log(err);
             } else {
                 newUser.password = hash;
-                newUser.save().then(function (user) {
+                newUser.save().then((user) => {
                     return done(null, user);
                 });
             }
         });
-    }).catch(function(err) {
+    }).catch((err) => {
         console.log(err);
     });
 }));
@@ -72,13 +72,13 @@ passport.use("local.signin", new LocalStrategy({
     usernameField: "email",
     passwordField: "password",
     passReqToCallback: true
-}, function(req, email, password, done) {
+},(req, email, password, done) => {
     req.checkBody("email", "Invalid email").notEmpty().isEmail();
     req.checkBody("password", "Invalid password").notEmpty();
     var errors = req.validationErrors();
     if (errors) {
         var messages = [];
-        errors.forEach(function(err) {
+        errors.forEach((err) => {
             messages.push(err.msg);
         });
         return done(null, false, req.flash("error", messages));
@@ -88,7 +88,7 @@ passport.use("local.signin", new LocalStrategy({
             where: {
                 email: email
             }
-        }).then(function(user) {
+        }).then((user) => {
         if (!user) {
             return done(null, false, {message: "User doesn't exist."});
         }
@@ -102,7 +102,7 @@ passport.use("local.signin", new LocalStrategy({
             }
         });
 
-    }).catch(function(err) {
+    }).catch((err) => {
         done(err, null);
     });
 }));

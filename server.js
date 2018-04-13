@@ -10,6 +10,7 @@ const session = require("express-session");
 const passport = require("passport");
 const flash = require("connect-flash");
 const validator = require("express-validator");
+const path = require("path");
 
 // Sets up the Express App
 // =============================================================
@@ -38,8 +39,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Static directory to be served
-// app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/user', user);
 app.use('/', index);
