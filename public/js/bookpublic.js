@@ -21,13 +21,19 @@ $(function() {
             function() {
                 console.log("added new book");
                 // Reload the page
-                location.reload();
+                // location.reload();
+                $("#modalbookinfo").text(newBook.title);
+                $("#mybookmodal").modal('show');
             }
         );
-
     });
 
-    // get data for all books to display books in html
+    $("#closebookmodal").on("click", function(event) {
+        location.reload();
+    });
+    
+
+    // get data for books to display books in html
     $.get("/api/books", function(data) {
         console.log(data);
 
