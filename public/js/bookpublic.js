@@ -39,7 +39,7 @@ $(function() {
         }
         else {
             for (i = 0; i < data.length; i++) {
-                $("#displaymybooks").append("<li>" + "Title: " + data[i].title + "  -  Author: " + data[i].author + "  -  Year: " + data[i].year + "  -  Genre: " + data[i].category + "<button id='removebookbutton' data-bookid=" + data[i].id + ">Remove</button>" + "</li>");
+                $("#displaymybooks").append("<li>" + data[i].title + "  -  " + data[i].author + "  -  " + data[i].year + "  -  " + data[i].category + "<button id='removebookbutton' data-bookid=" + data[i].id + ">Remove</button>" + "</li>");
             }
         }
     });
