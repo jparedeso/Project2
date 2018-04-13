@@ -10,21 +10,29 @@
                 </div>
             {{/if}}
             <form action="/user/signup" method="post">
-                <div class="form-group">
-                    <label for="email">E-Mail</label>
-                    <input type="text" id="email" name="email" class="form-control">
+                <div class="col-md-offset-2 col-md-8">
+                    <div class="form-group">
+                        <label for="email">E-Mail</label>
+                        <input type="text" id="email" name="email" class="form-control">
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" class="form-control">
+                <div class="col-md-offset-2 col-md-8">
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" class="form-control">
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="firstName">First Name</label>
-                    <input type="text" id="firstName" name="firstName" class="form-control">
+                <div class="col-md-offset-2 col-md-8">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" name="firstName" class="form-control">
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="lastName">Last Name</label>
-                    <input type="text" id="lastName" name="lastName" class="form-control">
+                <div class="col-md-offset-2 col-md-8">
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" class="form-control">
+                    </div>
                 </div>
                 <input type="hidden" name="_csrf" value="{{ csrfToken }}">
                 <button type="submit" class="btn btn-primary">Sign Up</button>
