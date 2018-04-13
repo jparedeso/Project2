@@ -18,7 +18,7 @@
         <div class="row">
             <div class="col-md-offset-2 col-md-8">
                 <div class="section-heading">
-                    <h2>Post your book</h2>
+                    <h2>List your book</h2>
                     <div class="heading-line"></div>
                     <p>Fill out to share a book with your group, then press submit.</p>
                 </div>
@@ -77,11 +77,16 @@
                         </div>
 
                         {{!-- modal --}}
-                        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                        <div id="mybookmodal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
                             <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
                                 <h1>You've just added:</h1>
-                                    <div id="modalbook">show added book</div>
+                                    <div class="modal-body">
+                                        <h2 id="modalbookinfo">{{!-- dynamically show book added --}}</h2>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" id="closebookmodal" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
