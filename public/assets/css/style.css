@@ -29,3 +29,21 @@
 #parallax3 {
 	background-image: url(../images/oldbooks.jpg);
 }
+
+li {
+    padding: 10px;
+    font-size: 18px;
+    /* font-weight: bold; */
+    border: 2px solid black;
+    /* background: white; */
+    margin-bottom: 5px;
+}
+
+#removebookbutton {
+    display: inline-block;
+    margin: 0 auto;
+    margin-left: 20px;
+    border: 1px solid red;
+    background-color: lightgray;
+    font-weight: bold;
+}

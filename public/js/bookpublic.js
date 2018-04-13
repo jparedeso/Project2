@@ -39,9 +39,24 @@ $(function() {
         }
         else {
             for (i = 0; i < data.length; i++) {
-                $("#displaymybooks").append("<p>Title: " + data[i].title + " - Author: " + data[i].author + " - Year: " + data[i].year + " - Genre: " + data[i].category + "</p>");
+                $("#displaymybooks").append("<li>" + "Title: " + data[i].title + "  -  Author: " + data[i].author + "  -  Year: " + data[i].year + "  -  Genre: " + data[i].category + "<button id='removebookbutton' data-bookid=" + data[i].id + ">Remove</button>" + "</li>");
             }
         }
+    });
+
+    $("#removebookbutton").on("click", function(event) {
+
+        var id = $(this).data("bookid");
+        console.log(id);
+
+        $.ajax("/api/books/" + id, {
+            type: "DELETE"
+        }).then(
+            function() {
+                console.log("deleted book");
+                // Reload the page to get the updated list
+                location.reload();
+            });
     });
 
 });
