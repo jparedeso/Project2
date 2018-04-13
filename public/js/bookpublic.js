@@ -2,13 +2,14 @@ $(function() {
 
     $("#postbook").on("submit", function(event) {
         event.preventDefault();
-        
+        console.log(isbn);
         var newBook = {
             title: $("#title").val().trim(),
             author: $("#author").val().trim(),
             year: $("#year").val().trim(),
             category: $("#genre").val().trim(),
-            // review: $("#review").val().trim(),
+            // once we add isbn column this will capture value
+            // isbn: $("isbn").val().trim(),
             available: 1
             // UserId: user.id
         };
@@ -49,6 +50,8 @@ $(function() {
             }
         }
     });
+    // i will copy and paste this code into the book display dynamic list once we add isbn column
+    // + "<img src='https://covers.openlibrary.org/b/isbn/" + data[i].isbn +"-S.jpg'> " 
 
     $("#removebookbutton").on("click", function(event) {
 

@@ -18,6 +18,10 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
             // value: ("Arts", "Biography", "Children's Books", "Comics & Graphic Novels", "Computers & Technology", "Cookbooks", "Education", "Health", "History", "Horror", "Literature", "Mystery, Thriller & Suspense", "Philosophy", "Poetry", "Politics", "Religion", "Science Fiction & Fantasy", "Travel", "True Crime", "Other")
         },
+        // isbn: {
+        //     type: DataTypes.STRING,
+        //     allowNull: false
+        // },
         available: {
             type: DataTypes.BOOLEAN,
             allowNull: false
