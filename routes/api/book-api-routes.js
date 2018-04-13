@@ -64,16 +64,5 @@ module.exports = function(app) {
         });
     });
 
-    // PUT route for updating books
-    app.put("/api/books", function(req, res) {
-        db.Book.update(
-            req.body,
-            {
-            where: {
-                id: req.body.id
-            }
-            }).then(function(dbBook) {
-            res.json(dbBook);
-        });
-    });
+    
 };
