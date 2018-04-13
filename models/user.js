@@ -23,7 +23,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
         },
         //gonna get rid of this one
-        userPassword: {
+        password: {
             type: DataTypes.STRING,
             allowNull: true
         }

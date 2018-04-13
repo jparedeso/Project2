@@ -51,11 +51,15 @@ passport.use("local.signup", new LocalStrategy({
            email: email,
            password: password
         });
-        Helpers.hashPassword(password, function(hash) {
-            newUser.password = hash;
-            newUser.save().then(function(user) {
-                return done(null, user);
-            });
+        Helpers.hashPassword(password, function(err, hash) {
+            if (err) {
+                console.log(err);
+            } else {
+                newUser.password = hash;
+                newUser.save().then(function (user) {
+                    return done(null, user);
+                });
+            }
         });
     }).catch(function(err) {
         console.log(err);
