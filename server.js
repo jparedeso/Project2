@@ -26,11 +26,12 @@ app.engine('.hbs', expressHbs({
     extname: ".hbs"
 }));
 app.set("view engine", "hbs");
-app.use(validator());
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 // parse application/json
 app.use(bodyParser.json());
+app.use(validator());
 app.use(session({secret: "bibliotecaboyz", resave: false, saveUninitialized: false}));
 app.use(flash());
 app.use(passport.initialize());
