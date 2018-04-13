@@ -2,7 +2,7 @@ $(function() {
 
     // display all user in a group
     $.get("/api/users", function(data) {
-        // console.log(data);
+        console.log(data);
 
         // empty to displaymyusers before adding new content
         $("#groupusers").empty();
@@ -18,27 +18,25 @@ $(function() {
     });
 
     $("#usersbooks").on("click", function(event) { 
-        $("#groupusers").append("<div>" + userBooks() + "</div>"); 
+        $("#groupusers").append("<div>" + "some function to display user books" + "</div>"); 
     });
 
-    function userBooks() {
-        // display all books for a group
-        $.get("/api/books", function(data) {
-            // console.log(data);
+    
+    // display all books for a group
+    $.get("/api/books", function(data) {
+        // console.log(data);
 
-            // empty to displaymybooks before adding new content
-            $("#allgroupbooks").empty();
-            // if the data is not there, then return an error message
-            if (!data) {
-                $("#allgroupbooks").append("<h2> I'm sorry, but you haven't added any books yet. </h2>");
+        // empty to displaymybooks before adding new content
+        $("#allgroupbooks").empty();
+        // if the data is not there, then return an error message
+        if (!data) {
+            $("#allgroupbooks").append("<h2> I'm sorry, but you haven't added any books yet. </h2>");
+        }
+        else {
+            for (i = 0; i < data.length; i++) {
+                $("#allgroupbooks").append("<li id='booklist'>" + data[i].title + "  -  " + data[i].author + "  -  " + data[i].year + "  -  " + data[i].category + "<button id='requestbook' data-bookemail=" + data[i].UserId + ">Request Book</button>" + "</li>");
             }
-            else {
-                for (i = 0; i < data.length; i++) {
-                    $("#allgroupbooks").append("<li id='booklist'>" + data[i].title + "  -  " + data[i].author + "  -  " + data[i].year + "  -  " + data[i].category + "<button id='requestbook' data-bookemail=" + data[i].UserId + ">Request Book</button>" + "</li>");
-                }
-            }
-        });
-    };
-
-    userBooks();
+        }
+    });
+    
 });
