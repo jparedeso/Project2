@@ -30,7 +30,7 @@
 	background-image: url(../images/oldbooks.jpg);
 }
 
-li {
+#booklist {
     padding: 10px;
     font-size: 18px;
     /* font-weight: bold; */
