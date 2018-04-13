@@ -2,14 +2,13 @@ $(function() {
 
     $("#postbook").on("submit", function(event) {
         event.preventDefault();
-        console.log(isbn);
         var newBook = {
             title: $("#title").val().trim(),
             author: $("#author").val().trim(),
             year: $("#year").val().trim(),
             category: $("#genre").val().trim(),
             // once we add isbn column this will capture value
-            // isbn: $("isbn").val().trim(),
+            isbn: $("#isbn").val().trim(),
             available: 1
             // UserId: user.id
         };
@@ -46,7 +45,7 @@ $(function() {
         }
         else {
             for (i = 0; i < data.length; i++) {
-                $("#displaymybooks").append("<li class='booklist'>" + data[i].title + "  -  " + data[i].author + "  -  " + data[i].year + "  -  " + data[i].category + "<button class='removebookbutton' data-bookid=" + data[i].id + ">Remove</button>" + "</li>");
+                $("#displaymybooks").append("<li class='booklist'>" + "<img src='https://covers.openlibrary.org/b/isbn/" + data[i].isbn +"-S.jpg'> " + data[i].title + "  -  " + data[i].author + "  -  " + data[i].year + "  -  " + data[i].category + "<button class='removebookbutton' data-bookid=" + data[i].id + ">Remove</button>" + "</li>");
             }
         }
         $(".removebookbutton").on("click", function(event) {

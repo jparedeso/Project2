@@ -57,5 +57,13 @@
     font-weight: bold;
 }
 
-
+nav.navbar{
+	position: fixed;
+	top: 0px;
+	margin-bottom: 0px;
+	padding: 10px 0px 10px 0px;
+	width: 100%;
+	border-radius: 0px;
+	transition: all 0.2s;
+}
 
