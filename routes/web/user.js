@@ -33,7 +33,7 @@ router.post("/signup", passport.authenticate("local.signup", {
             req.session.oldUrl = null;
             res.redirect(oldUrl);
         } else {
-            res.redirect("/user/profile");
+            res.redirect("/books/mybooks");
         }
     });
 
@@ -51,7 +51,7 @@ router.post("/signin", passport.authenticate("local.signin", {
         req.session.oldUrl = null;
         res.redirect(oldUrl);
     } else {
-        res.redirect("/user/profile");
+        res.redirect("/books/mybooks");
     }
 });
 
