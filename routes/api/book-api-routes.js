@@ -11,24 +11,29 @@ router.get("/user", isLoggedIn, (req, res, next) => {
                 where: {
                     UserId: req.user.id
                 },
-                include: {
-                    model: db.User
-                }
-            },
-            {
-                model: db.Exchange
+                include: [
+                    {
+                        model: db.User
+                    },
+                    {
+                        model: db.Exchange
+                    }
+                ]
             }
         ]
     }).then(books => {
         _.each(books, book => {
             let found = false;
-            for (let i = 0; i < book.Exchanges.length && !found; i++) {
-                const exchange = book.Exchanges[i];
 
-                if (!exchange.endDate) {
-                    found = true;
+            _.each(book.UserBooks, userBook => {
+                for (let i = 0; i < userBook.Exchanges.length && !found; i++) {
+                    const exchange = userBook.Exchanges[i];
+
+                    if (!exchange.endDate) {
+                        found = true;
+                    }
                 }
-            }
+            });
 
             book.available = !found;
         });
@@ -42,13 +47,15 @@ router.get("/", (req, res, next) => {
     db.Book.findAll({
         include: [
             {
-                model: db.Exchange
-            },
-            {
                 model: db.UserBook,
-                include: {
-                    model: db.User
-                }
+                include: [
+                    {
+                        model: db.User
+                    },
+                    {
+                        model: db.Exchange
+                    }
+                ]
             }
         ]
     }).then(books => {
@@ -58,92 +65,22 @@ router.get("/", (req, res, next) => {
             counts[book.isbn] = book.UserBooks.length;
         });
 
-        // {
-        //     "123": 2,
-        //     "456": 2,
-        //     "789": 1
-        // }
-
-        // ===============
-
-        // {
-        //     "123": 1,
-        //     "456": 1,
-        //     "789": 0
-        // }
-
-        // book 789 is not available
-
         _.each(books, book => {
-            const trxUsers = _.groupBy(book.Exchanges, "UserId");
-
-            _.each(trxUsers, trxUserArr => {
-                _.each(trxUserArr, trx => {
-                    if (!trx.endDate) {
+            _.each(book.UserBooks, userBook => {
+                _.each(userBook.Exchanges, exchange => {
+                    if (!exchange.endDate) {
                         counts[`${book.isbn}`] -= 1;
                     }
                 });
             });
-
-            // {
-            //     1: [
-            //         {
-            //             id: 1,
-            //             startDate: "",
-            //             endDate: null,
-            //             BookId: 123,
-            //             UserId: 1
-            //         },
-            //         {
-            //             id: 4,
-            //             startDate: "",
-            //             endDate: null,
-            //             BookId: 456,
-            //             UserId: 1
-            //         }
-            //     ],
-            //     2: [
-            //         {
-            //             id: 2,
-            //             startDate: "",
-            //             endDate: "",
-            //             BookId: 123,
-            //             UserId: 2
-            //         },
-            //         {
-            //             id: 3,
-            //             startDate: "",
-            //             endDate: "",
-            //             BookId: 456,
-            //             UserId: 2
-            //         },
-            //         {
-            //             id: 5,
-            //             startDate: "",
-            //             endDate: null,
-            //             BookId: 789,
-            //             UserId: 2
-            //         }
-            //     ]
-            // }
         });
 
         const availableBooks = _.filter(books, book => {
             let found = false;
 
             _.each(book.UserBooks, userBook => {
-                if (userBook.User) {
-                    if (userBook.User.id === req.user.id) {
-                        found = true;
-                    }
-                } else {
-                    for (let i = 0; i < userBook.Users.length && !found; i++) {
-                        const user = book.Users[i];
-
-                        if (user.id === req.user.id) {
-                            found = true;
-                        }
-                    }
+                if (userBook.User.id === req.user.id) {
+                    found = true;
                 }
             });
 
@@ -163,17 +100,31 @@ router.get("/", (req, res, next) => {
 });
 
 router.post("/", isLoggedIn, (req, res, next) => {
-   db.Book.create(req.body)
-     .then(book => {
-         return db.UserBook.create({
-             BookIsbn: book.isbn,
-             UserId: req.user.id
-         });
-   })
-     .then(() => {
-        res.end();
-     })
-     .catch(err => console.log(err));
+    db.Book.findOne({
+        where: {
+            isbn: req.body.isbn
+        }
+    }).then(book => {
+        if (book) {
+            db.UserBook.create({
+                BookIsbn: book.isbn,
+                UserId: req.user.id
+            }).then(() => {
+                res.end();
+            })
+              .catch(err => console.log(err));
+        }
+        db.Book.create(req.body).then(book => {
+            return db.UserBook.create({
+                BookIsbn: book.isbn,
+                UserId: req.user.id
+            });
+        }).then(() => {
+            res.end();
+        })
+          .catch(err => console.log(err));
+    }).catch(err => console.log(err));
+
 });
 
 router.delete("/:bookId", isLoggedIn, (req, res, next) => {

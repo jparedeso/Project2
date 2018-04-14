@@ -1,7 +1,7 @@
 module.exports = function(sequelize, DataTypes) {
     var Book = sequelize.define("Book", {
         isbn: {
-            type: DataTypes.CHAR(13),
+            type: DataTypes.STRING(30),
             allowNull: false,
             primaryKey: true,
             validate: {
@@ -50,9 +50,6 @@ module.exports = function(sequelize, DataTypes) {
     // will use associate to join Book with other tables
 
     Book.associate = function(models) {
-        Book.hasMany(models.Exchange, {
-            onDelete: "cascade"
-        });
         Book.hasMany(models.UserBook, {
             onDelete: "cascade"
         });

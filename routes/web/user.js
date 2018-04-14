@@ -10,7 +10,7 @@ router.get("/profile", isLoggedIn, (req, res, next) => {
     res.render("user/profile");
 });
 
-router.get("/logout", (req,res, next) => {
+router.get("/logout", isLoggedIn, (req,res, next) => {
     req.logout();
     res.redirect("/");
 });
@@ -55,8 +55,6 @@ router.post("/signin", passport.authenticate("local.signin", {
     }
 });
 
-module.exports = router;
-
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
@@ -70,3 +68,5 @@ function notLoggedIn(req, res, next) {
     }
     res.redirect("/");
 }
+
+module.exports = router;
