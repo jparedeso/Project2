@@ -12,7 +12,7 @@ $(function() {
         }
         else {
             for (i = 0; i < data.length; i++) {
-                $("#groupusers").append("<li class='userlist'>" + data[i].firstName + " " + data[i].lastName + "<button id='usersbooks' data-eachusersbooks=" + data[i].id + ">See Books</button>" + "<button id='getuseremail' data-useremail=" + data[i].email + ">Contact User</button>" + "</li>");
+                $("#groupusers").append("<li class='userlist'>" + data[i].firstName + " " + data[i].lastName + "<button id='usersbooks' data-eachusersbooks=" + data[i].id + ">See Books</button>" + "<button id='getuseremail' data-useremail=" + data[i].email + ">Contact Member</button>" + "</li>");
             }
         }
     });
