@@ -53,8 +53,8 @@ module.exports = function(sequelize, DataTypes) {
         Book.hasMany(models.Exchange, {
             onDelete: "cascade"
         });
-        Book.belongsToMany(models.User, {
-            through: models.UserBook
+        Book.hasMany(models.UserBook, {
+            onDelete: "cascade"
         });
     };
 

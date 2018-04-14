@@ -34,19 +34,47 @@ $(function() {
 
     if ($("#displaybooks")[0]) {
         // get data for books to display books in html
-        $.get("/api/books", function (data) {
-            console.log(data);
+        $.ajax({
+            url: "/api/books",
+            method: "GET",
+            success: function(data) {
+                console.log(data);
 
-            // empty to displaymybooks before adding new content
-            $("#displaybooks").empty();
-            // if the data is not there, then return an error message
-            if (!data) {
-                $("#displaybooks").append("<h2> I'm sorry, but you haven't added any books yet. </h2>");
-            }
-            else {
-                for (var i = 0; i < data.length; i++) {
-                    $("#displaymybooks").append("<li class='booklist'>" + "<img src='https://covers.openlibrary.org/b/isbn/" + data[i].isbn + "-S.jpg'> " + data[i].title + "  -  " + data[i].author + "  -  " + data[i].year + "  -  " + data[i].category + "</li>");
+                // empty to displaymybooks before adding new content
+                $("#displaybooks").empty();
+                // if the data is not there, then return an error message
+                if (!data) {
+                    $("#displaybooks").append("<h2> I'm sorry, but you haven't added any books yet. </h2>");
                 }
+                else {
+                    for (var i = 0; i < data.length; i++) {
+                        $("#displaybooks").append("<li class='booklist'>" + "<img src='https://covers.openlibrary.org/b/isbn/" + data[i].isbn +"-S.jpg'> " + data[i].title + "  -  " + data[i].author + "  -  " + data[i].year + "  -  " + data[i].category + "<button class='requestbookbutton' data-bookid=" + data[i].isbn + ">Request Book</button>" + "</li>");
+                    }
+                }
+
+                $(".requestbookbutton").on("click", function() {
+                    $.ajax({
+                        url: "/api/exchanges",
+                        method: "POST",
+                        data: {
+                            BookIsbn: $(this).data("bookid")
+                        },
+                        success: function() {
+                            // Reload the page to get the updated list
+                            location.reload();
+                        },
+                        error: function(xhr, status, error) {
+                            console.log(xhr);
+                            console.log(status);
+                            console.log(error);
+                        }
+                    });
+                });
+            },
+            error: function(xhr, status, error) {
+                console.log(xhr);
+                console.log(status);
+                console.log(error);
             }
         });
     }

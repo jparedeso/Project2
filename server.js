@@ -63,8 +63,10 @@ app.use((req, res, next) => {
 });
 
 const booksApi = require("./routes/api/book-api-routes");
+const exchangesApi = require("./routes/api/exchange-api-routes");
 
 app.use('/api/books', booksApi);
+app.use('/api/exchanges', exchangesApi);
 app.use('/books', books);
 app.use('/groups', groups);
 app.use('/user', user);

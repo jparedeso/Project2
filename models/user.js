@@ -39,8 +39,8 @@ module.exports = function(sequelize, DataTypes) {
         //         allowNull: false
         //     }
         // });
-        User.belongsToMany(models.Book, {
-            through: models.UserBook
+        User.hasMany(models.UserBook, {
+            onDelete: "cascade"
         });
     };
   

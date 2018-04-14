@@ -3,13 +3,16 @@ const router = express.Router();
 const _ = require("lodash");
 const db = require("../../models");
 
-router.get("/user", (req, res, next) => {
+router.get("/user", isLoggedIn, (req, res, next) => {
     db.Book.findAll({
         include: [
             {
-                model: db.User,
+                model: db.UserBook,
                 where: {
-                    id: req.user.id
+                    UserId: req.user.id
+                },
+                include: {
+                    model: db.User
                 }
             },
             {
@@ -42,14 +45,17 @@ router.get("/", (req, res, next) => {
                 model: db.Exchange
             },
             {
-                model: db.User
+                model: db.UserBook,
+                include: {
+                    model: db.User
+                }
             }
         ]
     }).then(books => {
         const counts = {};
 
         _.each(books, book => {
-            counts[book.isbn] = book.Users.length;
+            counts[book.isbn] = book.UserBooks.length;
         });
 
         // {
@@ -125,13 +131,21 @@ router.get("/", (req, res, next) => {
         const availableBooks = _.filter(books, book => {
             let found = false;
 
-            for (let i = 0; i < book.Users.length && !found; i++) {
-                const user = book.Users[i];
+            _.each(book.UserBooks, userBook => {
+                if (userBook.User) {
+                    if (userBook.User.id === req.user.id) {
+                        found = true;
+                    }
+                } else {
+                    for (let i = 0; i < userBook.Users.length && !found; i++) {
+                        const user = book.Users[i];
 
-                if (user.id === req.user.id) {
-                    found = true;
+                        if (user.id === req.user.id) {
+                            found = true;
+                        }
+                    }
                 }
-            }
+            });
 
             if (found) {
                 return false;
@@ -148,7 +162,7 @@ router.get("/", (req, res, next) => {
     }).catch(err => console.log(err));
 });
 
-router.post("/", (req, res, next) => {
+router.post("/", isLoggedIn, (req, res, next) => {
    db.Book.create(req.body)
      .then(book => {
          return db.UserBook.create({
@@ -162,7 +176,7 @@ router.post("/", (req, res, next) => {
      .catch(err => console.log(err));
 });
 
-router.delete("/:bookId", (req, res, next) => {
+router.delete("/:bookId", isLoggedIn, (req, res, next) => {
     db.UserBook.destroy({
         where: {
             BookIsbn: req.params.bookId,
