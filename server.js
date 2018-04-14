@@ -62,6 +62,9 @@ app.use((req, res, next) => {
    next();
 });
 
+const booksApi = require("./routes/api/book-api-routes");
+
+app.use('/api/books', booksApi);
 app.use('/books', books);
 app.use('/groups', groups);
 app.use('/user', user);
@@ -69,11 +72,11 @@ app.use('/', index);
 
 // Routes
 // =============================================================
-require("./routes/api/group-api-routes.js")(app);
-require("./routes/api/user-api-routes.js")(app);
-require("./routes/api/book-api-routes.js")(app);
-require("./routes/api/exchange-api-routes.js")(app);
-require("./routes/api/location-api-routes.js")(app);
+// require("./routes/api/group-api-routes.js")(app);
+// require("./routes/api/user-api-routes.js")(app);
+// require("./routes/api/book-api-routes.js")(app);
+// require("./routes/api/exchange-api-routes.js")(app);
+// require("./routes/api/location-api-routes.js")(app);
 
 // Starts the server to begin listening
 // =============================================================

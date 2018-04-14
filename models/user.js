@@ -31,13 +31,16 @@ module.exports = function(sequelize, DataTypes) {
     // will use associate to join user with other tables
 
     User.associate = function(models) {
-        User.hasMany(models.Book, {
+        User.hasMany(models.Exchange, {
             onDelete: "cascade"
         });
-        User.belongsTo(models.Group, {
-            foreignKey: {
-                allowNull: false
-            }
+        // User.belongsTo(models.Group, {
+        //     foreignKey: {
+        //         allowNull: false
+        //     }
+        // });
+        User.belongsToMany(models.Book, {
+            through: models.UserBook
         });
     };
   
