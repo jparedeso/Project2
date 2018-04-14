@@ -60,6 +60,11 @@
 #mybookmodal {
     padding-top: 100px;
 }
+
+#sign-up-text {
+    font-size: 18px;
+}
+
 nav.navbar{
 	position: fixed;
 	top: 0px;
