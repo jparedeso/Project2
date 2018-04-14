@@ -69,6 +69,10 @@
     list-style-type: none;
 }
 
+#displaybooks {
+    list-style-type: none;
+}
+
 #borrowedBooks {
     list-style-type: none; 
 }

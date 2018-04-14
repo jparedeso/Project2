@@ -48,7 +48,7 @@ $(function() {
                 }
                 else {
                     for (var i = 0; i < data.length; i++) {
-                        $("#displaybooks").append("<li class='booklist'>" + "<img src='https://covers.openlibrary.org/b/isbn/" + data[i].isbn +"-S.jpg'> " + data[i].title + "  -  " + data[i].author + "  -  " + data[i].year + "  -  " + data[i].category + "<button class='requestbookbutton' data-bookid=" + data[i].isbn + ">Request Book</button>" + "</li>");
+                        $("#displaybooks").append("<li class='booklist'>" + "<img src='https://covers.openlibrary.org/b/isbn/" + data[i].isbn +"-M.jpg'> " + "<h3>" + data[i].title + "</h3><p>" + data[i].author + "  -  " + data[i].year + "  -  " + data[i].category + "</p>" + "<button class='requestbookbutton' data-bookid=" + data[i].isbn + ">Request Book</button>" + "</li>");
                     }
                 }
 
@@ -72,7 +72,7 @@ $(function() {
                                     }
                                     else {
                                         for (var i = 0; i < data.length; i++) {
-                                            $("#displaybooks").append("<li class='booklist'>" + "<img src='https://covers.openlibrary.org/b/isbn/" + data[i].isbn +"-S.jpg'> " + data[i].title + "  -  " + data[i].author + "  -  " + data[i].year + "  -  " + data[i].category + "<button class='requestbookbutton' data-bookid=" + data[i].isbn + ">Request Book</button>" + "</li>");
+                                            $("#displaybooks").append("<li class='booklist'>" + "<img src='https://covers.openlibrary.org/b/isbn/" + data[i].isbn +"-M.jpg'> " + "<h3>" + data[i].title + "</h3><p>" + data[i].author + "  -  " + data[i].year + "  -  " + data[i].category + "</p>" + "<button class='requestbookbutton' data-bookid=" + data[i].isbn + ">Request Book</button>" + "</li>");
                                         }
                                     }
                                 },
@@ -139,7 +139,7 @@ $(function() {
                                     }
                                     else {
                                         for (var i = 0; i < data.length; i++) {
-                                            $("#displaymybooks").append("<li class='booklist'>" + "<img src='https://covers.openlibrary.org/b/isbn/" + data[i].isbn +"-S.jpg'> " + data[i].title + "  -  " + data[i].author + "  -  " + data[i].year + "  -  " + data[i].category + "<button class='removebookbutton' data-bookid=" + data[i].isbn + ">Remove</button>" + "</li>");
+                                            $("#displaymybooks").append("<li class='booklist'>" + "<img src='https://covers.openlibrary.org/b/isbn/" + data[i].isbn +"-M.jpg'> " + "<h3>" + data[i].title + "</h3><p>" + data[i].author + "  -  " + data[i].year + "  -  " + data[i].category + "</p>" + "<button class='removebookbutton' data-bookid=" + data[i].isbn + ">Remove</button>" + "</li>");
                                         }
                                     }
                                 },
@@ -229,7 +229,7 @@ $(function() {
                                     }
                                     else {
                                         for (var i = 0; i < data.length; i++) {
-                                            $("#borrowedBooks").append("<li class='booklist'>" + "<img src='https://covers.openlibrary.org/b/isbn/" + data[i].isbn +"-S.jpg'> " + data[i].title + "  -  " + data[i].author + "  -  " + data[i].year + "  -  " + data[i].category + "<button class='removebookbutton' data-bookid=" + data[i].id + ">Remove</button>" + "</li>");
+                                            $("#borrowedBooks").append("<li class='booklist'>" + "<img src='https://covers.openlibrary.org/b/isbn/" + data[i].isbn +"-M.jpg'> " + "<h3>" + data[i].title + "</h3><p>" + data[i].author + "  -  " + data[i].year + "  -  " + data[i].category + "</p>" + "<button class='removebookbutton' data-bookid=" + data[i].id + ">Remove</button>" + "</li>");
                                         }
                                     }
                                 },
