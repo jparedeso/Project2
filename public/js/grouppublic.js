@@ -34,7 +34,7 @@ $(function() {
         }
         else {
             for (i = 0; i < data.length; i++) {
-                $("#allgroupbooks").append("<li class='booklist'>" + data[i].title + "  -  " + data[i].author + "  -  " + data[i].year + "  -  " + data[i].category + "<button id='requestbook' data-bookemail=" + data[i].UserId + ">Request Book</button>" + "</li>");
+                $("#allgroupbooks").append("<li class='booklist'>" + "<img src='https://covers.openlibrary.org/b/isbn/" + data[i].isbn +"-S.jpg'> " + data[i].title + "  -  " + data[i].author + "  -  " + data[i].year + "  -  " + data[i].category + "<button id='requestbook' data-bookemail=" + data[i].UserId + ">Request Book</button>" + "</li>");
             }
         }
     });
