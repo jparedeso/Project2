@@ -12,6 +12,9 @@ module.exports = function(sequelize, DataTypes) {
                 allowNull: false
             }
         });
+        UserBook.hasMany(models.Exchange, {
+            onDelete: "cascade"
+        });
     };
     // UserBook.sync({
     // 	force: true

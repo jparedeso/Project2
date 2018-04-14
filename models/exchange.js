@@ -23,7 +23,7 @@ module.exports = function(sequelize, DataTypes) {
             }
         });
 
-        Exchange.belongsTo(models.Book, {
+        Exchange.belongsTo(models.UserBook, {
             foreignKey: {
                 allowNull: false
             }

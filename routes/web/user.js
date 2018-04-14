@@ -10,7 +10,7 @@ router.get("/profile", isLoggedIn, (req, res, next) => {
     res.render("user/profile");
 });
 
-router.get("/logout", (req,res, next) => {
+router.get("/logout", isLoggedIn, (req,res, next) => {
     req.logout();
     res.redirect("/");
 });
@@ -33,7 +33,7 @@ router.post("/signup", passport.authenticate("local.signup", {
             req.session.oldUrl = null;
             res.redirect(oldUrl);
         } else {
-            res.redirect("/user/profile");
+            res.redirect("/books/mybooks");
         }
     });
 
@@ -51,11 +51,9 @@ router.post("/signin", passport.authenticate("local.signin", {
         req.session.oldUrl = null;
         res.redirect(oldUrl);
     } else {
-        res.redirect("/user/profile");
+        res.redirect("/books/mybooks");
     }
 });
-
-module.exports = router;
 
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
@@ -70,3 +68,5 @@ function notLoggedIn(req, res, next) {
     }
     res.redirect("/");
 }
+
+module.exports = router;
