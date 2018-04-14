@@ -69,6 +69,10 @@
     list-style-type: none;
 }
 
+#borrowedBooks {
+    list-style-type: none; 
+}
+
 .booklist img {
     float: left;
     margin: 0 15px 0 0;
