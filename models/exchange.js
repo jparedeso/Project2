@@ -1,7 +1,10 @@
+const moment = require("moment");
+
 module.exports = function(sequelize, DataTypes) {
     var Exchange = sequelize.define("Exchange", {
         startDate: {
             type: DataTypes.DATE,
+            defaultValue: moment().format(),
             allowNull: false
             // value: ("pending", "complete")
         },
@@ -26,6 +29,10 @@ module.exports = function(sequelize, DataTypes) {
             }
         });
     };
+
+    // Exchange.sync({
+    // 	force: true
+    // });
   
     return Exchange;
 };

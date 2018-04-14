@@ -3,6 +3,38 @@ const router = express.Router();
 const _ = require("lodash");
 const db = require("../../models");
 
+router.get("/user", (req, res, next) => {
+    db.Book.findAll({
+        include: [
+            {
+                model: db.User,
+                where: {
+                    id: req.user.id
+                }
+            },
+            {
+                model: db.Exchange
+            }
+        ]
+    }).then(books => {
+        _.each(books, book => {
+            let found = false;
+            for (let i = 0; i < book.Exchanges.length && !found; i++) {
+                const exchange = book.Exchanges[i];
+
+                if (!exchange.endDate) {
+                    found = true;
+                }
+            }
+
+            book.available = !found;
+        });
+
+
+        res.json(books);
+    }).catch(err => console.log(err));
+});
+
 router.get("/", (req, res, next) => {
     db.Book.findAll({
         include: [
@@ -113,38 +145,6 @@ router.get("/", (req, res, next) => {
         });
 
         res.json(availableBooks);
-    }).catch(err => console.log(err));
-});
-
-router.get("/user", (req, res, next) => {
-    db.Book.findAll({
-        include: [
-            {
-                model: db.User,
-                where: {
-                    id: req.user.id
-                }
-            },
-            {
-                model: db.Exchange
-            }
-        ]
-    }).then(books => {
-        _.each(books, book => {
-            let found = false;
-            for (let i = 0; i < book.Exchanges.length && !found; i++) {
-                const exchange = book.Exchanges[i];
-
-                if (!exchange.endDate) {
-                    found = true;
-                }
-            }
-
-            book.available = !found;
-        });
-
-
-        res.json(books);
     }).catch(err => console.log(err));
 });
 
