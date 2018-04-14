@@ -65,6 +65,36 @@
     font-size: 18px;
 }
 
+#displaymybooks {
+    list-style-type: none;
+}
+
+.booklist img {
+    float: left;
+    margin: 0 15px 0 0;
+    max-width: 100px;
+}
+
+.booklist h3 {
+    font-weight: bold;
+}
+
+/* .booklist p {
+    font: 200 12px/1.5 Georgia, Times New Roman, serif;
+  } */
+
+.booklist {
+    padding: 10px;
+    overflow: auto;
+    border: solid 1px black;
+    margin-bottom: 5px;
+}
+
+.booklist:hover {
+    background: #eee;
+    cursor: pointer;
+  }
+
 nav.navbar{
 	position: fixed;
 	top: 0px;
